@@ -3,11 +3,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/AybTGH/app-jenkins.git'
+                // Spécifier explicitement la branche main
+                git branch: 'main', url: 'https://github.com/AybTGH/app-jenkins.git'
             }
         }
         stage('Build Docker Image') {
             steps {
+                // Build Docker image
                 sh 'docker build -t myapp:latest .'
             }
         }
@@ -17,8 +19,9 @@ pipeline {
                 sh 'docker stop myapp || true'
                 sh 'docker rm myapp || true'
                 // Run container
-                sh 'docker run -d -p 5000:5000 --name flask-viz-app flask-viz-app:latest'
+                sh 'docker run -d -p 5000:5000 --name myapp myapp:latest'
             }
         }
     }
 }
+
