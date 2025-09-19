@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     # Données d'exemple
-    data = [5, 7, 2, 4, 9, 10, 1, 5]
+    data = [5, 7, 2, 4, 9, 10, 1, 5, 20]
     
     # Créer le graphique
     sns.set(style="whitegrid")
